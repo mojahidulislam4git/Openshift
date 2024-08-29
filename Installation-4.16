@@ -1,6 +1,7 @@
 OpenShift Container Platform 4.16
 a. Installer-provisioned Infrastructure (
 b. User-provisioned Infrastructure
-  -
+  - UPI allows users to provision their infrastructure pieces and deploy OpenShift on top of them.
+  - Highly customizable and tunable. 
 c  Assisted Installer
   -ISO discovery to identify the infrastructure set up by the user to deploy the cluster.
