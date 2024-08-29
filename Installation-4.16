@@ -7,4 +7,4 @@ b. User-provisioned Infrastructure
   - Highly customizable and tunable. 
 c  Assisted Installer
   -ISO discovery to identify the infrastructure set up by the user to deploy the cluster.
-![screenshot](Installation Process.PNG)
+![screenshot](Openshift/Installation Process.PNG)
