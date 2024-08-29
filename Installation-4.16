@@ -1,0 +1,6 @@
+OpenShift Container Platform 4.16
+a. Installer-provisioned Infrastructure (
+b. User-provisioned Infrastructure
+  -
+c  Assisted Installer
+  -ISO discovery to identify the infrastructure set up by the user to deploy the cluster.
