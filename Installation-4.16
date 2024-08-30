@@ -8,3 +8,6 @@ b. User-provisioned Infrastructure
 c  Assisted Installer
   -ISO discovery to identify the infrastructure set up by the user to deploy the cluster.
 ![screenshot](Openshift/Installation Process.PNG)
+
+Assisted Installer
+https://www.youtube.com/watch?v=Y-7_U-C49wk
