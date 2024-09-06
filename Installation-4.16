@@ -18,3 +18,7 @@ OKD- Single Node
 https://hackmd.io/tDnHM2BoQru0VgqMGI_Q5g
 
 
+[core@node101 ~]$ sudo nslookup 192.168.10.101
+101.10.168.192.in-addr.arpa	name = api-int.snokd10.internal.net.
+101.10.168.192.in-addr.arpa	name = api.snokd10.internal.net.
+101.10.168.192.in-addr.arpa	name = node101.snokd10.internal.net.
