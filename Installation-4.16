@@ -1,3 +1,14 @@
+Requirements for installing OpenShift on a single node
+Installing OKD on a single node alleviates some of the requirements for high availability and large scale clusters. However, you must address the following requirements:
+
+Administration host: You must have a computer to prepare the ISO, to create the USB boot drive, and to monitor the installation.
+
+
+
+
+
+
+
 OpenShift Container Platform 4.16
 a. Installer-provisioned Infrastructure
   - The IPI installation provides a turn-key solution and includes all the necessary infrastructure services within the Red Hat OpenShift cluster. 
@@ -62,3 +73,82 @@ For the installation program, the program uses three sets of files during instal
 
 The installation configuration file is transformed into Kubernetes manifests, and then the manifests are wrapped into Ignition config files. The installation program uses these Ignition config files to create the cluster.
 The installation configuration files are all pruned when you run the installation program, so be sure to back up all the configuration files that you want to use again.
+
+Installing single-node OKD manually
+To install OKD on a single node, first generate the installation ISO, and then boot the server from the ISO. You can monitor the installation using the openshift-install installation program.
+
+Additional resources
+Networking requirements for user-provisioned infrastructure
+User-provisioned DNS requirements
+Configuring DHCP or static IP addresses
+
+Generating the installation ISO with coreos-installer
+$ OKD_VERSION=<okd_version> 
+$ ARCH=<architecture> 
+$ curl -L https://github.com/okd-project/okd/releases/download/$OKD_VERSION/openshift-client-linux-$OKD_VERSION.tar.gz -o oc.tar.gz
+$ $ tar zxf oc.tar.gz
+$ chmod +x oc
+$ curl -L https://github.com/okd-project/okd/releases/download/$OKD_VERSION/openshift-install-linux-$OKD_VERSION.tar.gz -o openshift-install-linux.tar.gz
+$ tar zxvf openshift-install-linux.tar.gz
+$ chmod +x openshift-install
+$ ISO_URL=$(./openshift-install coreos print-stream-json | grep location | grep $ARCH | grep iso | cut -d\" -f4)
+$ curl -L $ISO_URL -o fcos-live.iso
+
+Prepare the install-config.yaml file:
+apiVersion: v1
+baseDomain: <domain> 
+compute:
+- name: worker
+  replicas: 0 
+controlPlane:
+  name: master
+  replicas: 1 
+metadata:
+  name: <name> 
+networking: 
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 10.0.0.0/16 
+  networkType: OVNKubernetes
+  serviceNetwork:
+  - 172.30.0.0/16
+platform:
+  none: {}
+bootstrapInPlace:
+  installationDisk: /dev/disk/by-id/<disk_id> 
+pullSecret: '<pull_secret>' 
+sshKey: |
+  <ssh_key> 
+
+
+
+$ mkdir sno
+$ cp install-config.yaml sno
+$ ./openshift-install --dir=sno create single-node-ignition-config
+$ alias coreos-installer='podman run --privileged --pull always --rm -v /dev:/dev -v /run/udev:/run/udev -v $PWD:/data -w /data quay.io/coreos/coreos-installer:release'
+$ coreos-installer iso ignition embed -fi sno/bootstrap-in-place-for-live-iso.ign fcos-live.iso
+
+
+
+
+Monitoring the cluster installation using openshift-install
+Use openshift-install to monitor the progress of the single-node cluster installation.
+
+Procedure
+  Attach the modified FCOS installation ISO to the target host.
+  Configure the boot drive order in the server BIOS settings to boot from the attached discovery ISO and then reboot the server.
+  On the administration host, monitor the installation by running the following command:
+    $ ./openshift-install --dir=sno wait-for install-complete
+The server restarts several times while deploying the control plane.
+Verification
+
+After the installation is complete, check the environment by running the following command:
+$ export KUBECONFIG=sno/auth/kubeconfig
+
+$ oc get nodes
+Example output
+
+NAME                         STATUS   ROLES           AGE     VERSION
+control-plane.example.com    Ready    master,worker   10m     v1.27.9+e36e183
