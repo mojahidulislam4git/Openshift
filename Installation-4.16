@@ -59,3 +59,6 @@ For the installation program, the program uses three sets of files during instal
   - An installation configuration file that is named install-config.yaml
   - Kubernetes manifests
   - Ignition config files for your machine types
+
+The installation configuration file is transformed into Kubernetes manifests, and then the manifests are wrapped into Ignition config files. The installation program uses these Ignition config files to create the cluster.
+The installation configuration files are all pruned when you run the installation program, so be sure to back up all the configuration files that you want to use again.
