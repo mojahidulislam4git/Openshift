@@ -1,0 +1,26 @@
+Cluster details
+Cluster address	ocp4.mylab.local
+OpenShift version	4.16.9
+CPU architecture	x86_64
+Hosts' network configuration	Static IP
+
+
+Host inventory
+Hosts	1
+Total cores	8
+Total memory	16.00 GiB
+Total storage	536.87 GB
+
+
+Networking
+Networking management type	User-Managed Networking
+Stack type	IPv4
+Machine networks CIDR	192.168.204.0/24
+API IP	192.168.204.140
+Ingress IP	192.168.204.140
+
+Advanced networking settings
+Cluster network CIDR	10.128.0.0/14
+Cluster network host prefix	23
+Service network CIDR	172.30.0.0/16
+Networking type	Open Virtual Network (OVN)
