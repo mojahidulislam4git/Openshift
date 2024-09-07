@@ -10,7 +10,7 @@
 
 # You can use the installation program to deploy each type of cluster.
   The installation program generates the main assets, such as Ignition config files for the:-
-   **[^1]: Bootstrap**
+  [^1]: **Bootstrap**
    **[^1]: Control plane**
    **[^1]: Compute machines**
 
