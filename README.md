@@ -9,9 +9,11 @@
                        - Connected and disconnected environements.
 
 # You can use the installation program to deploy each type of cluster.
-The installation program generates the main assets, such as Ignition config files for the:-
-   Bootstrap,
-   Control plane
-   Compute machines
+  The installation program generates the main assets, such as Ignition config files for the:-
+   **[^1]: Bootstrap**
+   **[^1]: Control plane**
+   **[^1]: Compute machines**
 
-![download](https://github.com/user-attachments/assets/16ae41fc-c4ea-4a7f-b449-70c9b7825abc)
+
+   
+
