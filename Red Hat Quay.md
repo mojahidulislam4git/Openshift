@@ -1,6 +1,14 @@
 # Red Hat Quay #
 Red Hat Quay is a distributed and highly available container image registry for your enterprise.
 
+Red Hat Quay container registry platform provides-
+Secure storage
+Distribution
+Access controls
+Georeplications
+Repository mirroring
+Governance of containers
+Cloud-native artifacts
 
 
 
