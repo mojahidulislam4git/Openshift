@@ -4,6 +4,6 @@
 3. Two or more virtual CPUs
 4. 4 GB or more of RAM
 5. Approximately 30 GB of disk space on your test system
-    a. 10 GB of disk space for the RHEL OS.
-    b. 10 GB of disk space for Docker storage for running three containers.
-    c. 10 GB of disk space for Red Hat Quay local storage
+   <br/>    a. 10 GB of disk space for the RHEL OS.
+   <br/>    b. 10 GB of disk space for Docker storage for running three containers.
+   <br/>    c. 10 GB of disk space for Red Hat Quay local storage
