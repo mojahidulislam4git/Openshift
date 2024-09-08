@@ -28,6 +28,9 @@ Content distribution features in Red Hat Quay include the following:
        explicit, allowlisted hole in the firewall.
     b. Using two independent Red Hat Quay and Clair installations. One installation is connected to the internet and another within a disconnected, or firewalled, 
        environment. Image and vulnerability data is manually transferred from the connected environment to the disconnected environment using offline media.
+## 1.3. BUILD AUTOMATION
+Red Hat Quay supports building Dockerfiles using a set of worker nodes on OpenShift Container Platform or Kubernetes platforms.
+## 1.4. RED HAT QUAY ENHANCED BUILD ARCHITECTURE
 
   
   
