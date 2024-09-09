@@ -27,9 +27,9 @@ PREREQUISITES
    <br/>    b. 10 GB of disk space for Docker storage for running three containers.
    <br/>    c. 10 GB of disk space for Red Hat Quay local storage
 1.1. INSTALLING PODMAN
-   Podman for creating and deploying containers
-   $ sudo yum install -y podman
-   $ sudo yum module install -y container-tools
+  <br/> Podman for creating and deploying containers
+  <br/> $ sudo yum install -y podman
+  <br/>  $ sudo yum modules install -y container-tools [Not Working]
    
 2.1. INSTALL AND REGISTER THE RHEL SERVER
    $ subscription-manager register --username=<user_name> --password=<password>
@@ -74,7 +74,7 @@ Using port mappings to expose ports on the host and then use these ports in comb
 Red Hat Quay requires a database for storing metadata.
  $ mkdir -p $QUAY/postgres-quay [$QUAY- Installation folder]
  $ setfacl -m u:26:-wx $QUAY/postgres-quay [Apply Permissions]
- $ sudo podman run -d --rm --name postgresql-quay -e POSTGRESQL_USER=quayuser -e POSTGRESQL_PASSWORD=quaypass -e POSTGRESQL_DATABASE=quay -e POSTGRESQL_ADMIN_PASSWORD=adminpass -p 5432:5432 -v $QUAY/postgres \ quay:/var/lib/pgsql/data:Z registry.redhat.io/rhel8/postgresql-13:1-109
+ $ sudo podman run -d --rm --name postgresql-quay -e POSTGRESQL_USER=quayuser -e POSTGRESQL_PASSWORD=quaypass -e POSTGRESQL_DATABASE=quay -e POSTGRESQL_ADMIN_PASSWORD=adminpass -p 5432:5432 -v $QUAY/postgres-quay:/var/lib/pgsql/data:Z registry.redhat.io/rhel8/postgresql-13:1-109
  $ sudo podman exec -it postgresql-quay /bin/bash -c 'echo "CREATE EXTENSION IF NOT EXISTS pg_trgm" | psql -d quay -U postgres'
  
 3.3. CONFIGURING REDIS
@@ -84,27 +84,31 @@ $ sudo podman run -d --rm --name redis -p 6379:6379 -e REDIS_PASSWORD=strongpass
 4.1. CREATING THE YAML CONFIGURATION FILE
 $ touch config.yaml
 BUILDLOGS_REDIS:
-host: quay-server.example.com
-password: strongpassword
-port: 6379
+    host: quay-01.mylab.local
+    password: strongpassword
+    port: 6379
 CREATE_NAMESPACE_ON_PUSH: true
 DATABASE_SECRET_KEY: a8c2744b-7004-4af2-bcee-e417e7bdd235
-DB_URI: postgresql://quayuser:quaypass@quay-server.example.com:5432/quay
+DB_URI: postgresql://quayuser:quaypass@quay-01.mylab.local:5432/quay
 DISTRIBUTED_STORAGE_CONFIG:
-default:
-- LocalStorage
-- storage_path: /datastorage/registry
+    default:
+        - LocalStorage
+        - storage_path: /datastorage/registry
 DISTRIBUTED_STORAGE_DEFAULT_LOCATIONS: []
 DISTRIBUTED_STORAGE_PREFERENCE:
-- default
+    - default
 FEATURE_MAILING: false
 SECRET_KEY: e9bd34f4-900c-436a-979e-7530e5d74ac8
-SERVER_HOSTNAME: quay-server.example.com
+SERVER_HOSTNAME: quay-01.mylab.local
 SETUP_COMPLETE: true
 USER_EVENTS_REDIS:
-host: quay-server.example.com
-password: strongpassword
-port: 6379
+    host: quay-01.mylab.local
+    password: strongpassword
+    port: 6379
+SUPER_USERS:
+  - quayadmin
+...
+
 $ mkdir $QUAY/config
 $ cp -v config.yaml $QUAY/config
 4.1.1. Configuring a Red Hat Quay superuser
