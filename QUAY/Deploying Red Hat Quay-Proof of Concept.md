@@ -26,3 +26,32 @@ PREREQUISITES
    <br/>    a. 10 GB of disk space for the RHEL OS.
    <br/>    b. 10 GB of disk space for Docker storage for running three containers.
    <br/>    c. 10 GB of disk space for Red Hat Quay local storage
+1.1. INSTALLING PODMAN
+   Podman for creating and deploying containers
+   $ sudo yum install -y podman
+   $ sudo yum module install -y container-tools
+   
+2.1. INSTALL AND REGISTER THE RHEL SERVER
+   $ subscription-manager register --username=<user_name> --password=<password>
+   $ subscription-manager refresh
+   $ subscription-manager list --available
+   $ subscription-manager attach --pool=<pool_id>
+   $ yum update -y
+   
+2.2. REGISTRY AUTHENTICATION
+   Set up authentication to registry.redhat.io
+   $ sudo podman login registry.redhat.io (Prove the Credentials)
+
+2.3. FIREWALL CONFIGURATION
+  If you have a firewall running on your system allow below ports.
+  $ firewall-cmd --permanent --add-port=80/tcp \
+    && firewall-cmd --permanent --add-port=443/tcp \
+    && firewall-cmd --permanent --add-port=5432/tcp \
+    && firewall-cmd --permanent --add-port=5433/tcp \
+    && firewall-cmd --permanent --add-port=6379/tcp \
+    && firewall-cmd --reload
+    
+2.4. IP ADDRESSING AND NAMING SERVICES
+
+   
+   
