@@ -44,7 +44,7 @@ PREREQUISITES
 
 2.3. FIREWALL CONFIGURATION
   If you have a firewall running on your system allow below ports.
-  $ firewall-cmd --permanent --add-port=80/tcp \
+ <br/> $ firewall-cmd --permanent --add-port=80/tcp \
     && firewall-cmd --permanent --add-port=443/tcp \
     && firewall-cmd --permanent --add-port=5432/tcp \
     && firewall-cmd --permanent --add-port=5433/tcp \
@@ -52,6 +52,67 @@ PREREQUISITES
     && firewall-cmd --reload
     
 2.4. IP ADDRESSING AND NAMING SERVICES
+  Component Containers configured in Red Hat Quay so that they can communicate with each other.
+   Using a naming service - using DNS(dnsname) to nake the containers so that they can be called by Names.
+   
+   Using the host network - 
+   
+   Configuring port mapping - Port mappings to expose ports on the host and then use these ports in combination with the host IP address or host name.
+ <br/>  Component             #  Port Mapping             # Address
+ <br/>  Quay                  # -p 80:8080 /-p 443:8443   # http://quay-server.example.com
+ <br/>  Postgres for Quay     # -p 5432:5432              # quay-server.example.com:5432
+ <br/>  Redis                 # -p 6379:6379              # quay-server.example.com:6379
+ <br/>  Postgres for Clair V4 # -p 5433:5432              # quay-server.example.com:5433
+ <br/>  Clair V4              # -p 8081:8080              # http://quay-server.example.com:8081
 
-   
-   
+3.1. CONFIGURING PORT MAPPING FOR RED HAT QUAY 
+Using port mappings to expose ports on the host and then use these ports in combination with the host IP address or host name to navigate to the Red Hat Quay endpoint.
+ $ ip a
+ $ cat /etc/hosts [local DNS Entry]
+
+3.2. CONFIGURING THE DATABASE-
+Red Hat Quay requires a database for storing metadata.
+ $ mkdir -p $QUAY/postgres-quay [$QUAY- Installation folder]
+ $ setfacl -m u:26:-wx $QUAY/postgres-quay [Apply Permissions]
+ $ sudo podman run -d --rm --name postgresql-quay -e POSTGRESQL_USER=quayuser -e POSTGRESQL_PASSWORD=quaypass -e POSTGRESQL_DATABASE=quay -e POSTGRESQL_ADMIN_PASSWORD=adminpass -p 5432:5432 -v $QUAY/postgres \ quay:/var/lib/pgsql/data:Z registry.redhat.io/rhel8/postgresql-13:1-109
+ $ sudo podman exec -it postgresql-quay /bin/bash -c 'echo "CREATE EXTENSION IF NOT EXISTS pg_trgm" | psql -d quay -U postgres'
+ 
+3.3. CONFIGURING REDIS
+Redis is a key-value store that is used by Red Hat Quay for live builder logs.
+$ sudo podman run -d --rm --name redis -p 6379:6379 -e REDIS_PASSWORD=strongpassword registry.redhat.io/rhel8/redis-6:1-110
+
+4.1. CREATING THE YAML CONFIGURATION FILE
+$ touch config.yaml
+BUILDLOGS_REDIS:
+host: quay-server.example.com
+password: strongpassword
+port: 6379
+CREATE_NAMESPACE_ON_PUSH: true
+DATABASE_SECRET_KEY: a8c2744b-7004-4af2-bcee-e417e7bdd235
+DB_URI: postgresql://quayuser:quaypass@quay-server.example.com:5432/quay
+DISTRIBUTED_STORAGE_CONFIG:
+default:
+- LocalStorage
+- storage_path: /datastorage/registry
+DISTRIBUTED_STORAGE_DEFAULT_LOCATIONS: []
+DISTRIBUTED_STORAGE_PREFERENCE:
+- default
+FEATURE_MAILING: false
+SECRET_KEY: e9bd34f4-900c-436a-979e-7530e5d74ac8
+SERVER_HOSTNAME: quay-server.example.com
+SETUP_COMPLETE: true
+USER_EVENTS_REDIS:
+host: quay-server.example.com
+password: strongpassword
+port: 6379
+$ mkdir $QUAY/config
+$ cp -v config.yaml $QUAY/config
+4.1.1. Configuring a Red Hat Quay superuser
+Superusers have the following capabilities:
+<br/> User management
+<br/> Organization management
+<br/> Service key management
+<br/> Change log transparency
+<br/> Usage log management
+<br/> Globally-visible user message creation
+
