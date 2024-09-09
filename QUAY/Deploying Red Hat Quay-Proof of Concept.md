@@ -116,3 +116,28 @@ Superusers have the following capabilities:
 <br/> Usage log management
 <br/> Globally-visible user message creation
 
+Add the SUPER_USERS array to the config.yaml file:
+ SERVER_HOSTNAME: quay-server.example.com
+ SETUP_COMPLETE: true
+ SUPER_USERS:- quayadmin
+ 
+4.2. PREPARE LOCAL STORAGE FOR IMAGE DATA
+ $ mkdir $QUAY/storage
+ $ setfacl -m u:1001:-wx $QUAY/storage
+
+4.3. DEPLOY THE RED HAT QUAY REGISTRY
+$ sudo podman run -d --rm -p 80:8080 -p 443:8443 --name=quay -v $QUAY/config:/conf/stack:Z -v $QUAY/storage:/datastorage:Z registry.redhat.io/quay/quay-rhel8:v3.12.1
+
+ CHAPTER 5. USING RED HAT QUAY
+ <br/> GUI-(Using Browser)
+ <br/> Access the Quay using the browser  at http://quay-server.example.com [updated same in /etc/hosts and config.yaml]
+ <br/> Create Account and add a user, for example, quayadmin with a password password.
+ <br/>CLI-
+ <br/> $ sudo podman login --tls-verify=false quay-server.example.com
+ 
+  5.1. PUSHING AND PULLING IMAGES ON RED HAT QUAY
+ <br/> $ sudo podman pull busybox
+ <br/> $ sudo podman images
+ <br/> $ sudo podman tag docker.io/library/busybox quay-server.example.com/quayadmin/busybox:test [modify the Tag]
+ <br/> $ sudo podman push --tls-verify=false quay-server.example.com/quayadmin/busybox:test [Push the Image]
+  
