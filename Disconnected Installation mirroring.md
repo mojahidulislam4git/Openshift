@@ -9,3 +9,8 @@ Restricted: Disconnected -
 
 Restricted: Air Gapped -
 ![openshift-disconnected-installs-img3 png](https://github.com/user-attachments/assets/75f104c2-aba3-4853-97cb-a3cbcab3e786)
+
+
+
+
+INFO[2024-09-11 22:27:03] Quay is available at https://js-01.mylab.local:8443 with credentials (init, m7f3Ry4uDV659dnGIQLKCc1SrUvxF082)
