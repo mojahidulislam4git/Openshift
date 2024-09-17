@@ -19,7 +19,13 @@ https://thenewstack.io/container-networking-landscape-cni-coreos-cnm-docker/
  </br> b. Endpoint - An Endpoint joins a Sandbox to a Network.
  </br> c. Network - Networks consist of many endpoints.
 
- </br> NetworkController- NetworkController object provides the entry-point into libnetwork that exposes simple APIs for the users (such as Docker Engine) to allocate and manage Networks
+  </br> NetworkController- NetworkController object provides the entry-point into libnetwork that exposes simple APIs for the users (such as Docker Engine) to allocate and manage Networks.
+ </br> Libnetwork- Libnetwork is a real-world implementation of the CNM. 
+ </br> Drivers- Drivers extend the model by implementing specific network topologies such as VXLAN overlay networks.
+
+ ![image](https://github.com/user-attachments/assets/18023e49-59b3-4141-a27f-1a19a0c19881)
+
+ 
 
 ![image](https://github.com/user-attachments/assets/82357dc6-c82e-48dc-8179-5873a7bf918d)
 
