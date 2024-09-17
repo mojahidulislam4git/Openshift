@@ -12,18 +12,17 @@ https://thenewstack.io/container-networking-landscape-cni-coreos-cnm-docker/
   </br> b. Endpoint
   </br> c. Network
 
-![image](https://github.com/user-attachments/assets/e7cecd02-5a18-4f18-964d-545ac9f8304c)
+![image](https://github.com/user-attachments/assets/191cf229-fb09-4fce-9eee-114b3203ded0)
 
- </br> a. Sandbox - A Sandbox contains the configuration of a container's network stack. which includes container's interfaces, routing table and DNS settings.
-  Sandbox can be implemented using  Linux Network Namespace, a FreeBSD Jail or other similar concept.
- </br> b. Endpoint - An Endpoint joins a Sandbox to a Network.
- </br> c. Network - Networks consist of many endpoints.
+
+ </br> a. Sandbox - A sandbox is an isolated network stack in a container. It includes Ethernet interfaces, ports, routing tables, and DNS config.
+ </br> b. Endpoint - An Endpoint joins a Sandbox to a Network.virtual network interfaces (E.g. veth). 
+ </br> c. Network -  Networks are a software implementation of a switch (802.1d bridge).
 
   </br> NetworkController- NetworkController object provides the entry-point into libnetwork that exposes simple APIs for the users (such as Docker Engine) to allocate and manage Networks.
  </br> Libnetwork- Libnetwork is a real-world implementation of the CNM. 
  </br> Drivers- Drivers extend the model by implementing specific network topologies such as VXLAN overlay networks.
  
-
 ![image](https://github.com/user-attachments/assets/82357dc6-c82e-48dc-8179-5873a7bf918d)
 
 
