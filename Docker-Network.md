@@ -15,10 +15,12 @@ https://thenewstack.io/container-networking-landscape-cni-coreos-cnm-docker/
 <img src="https://github.com/user-attachments/assets/191cf229-fb09-4fce-9eee-114b3203ded0" width="400">
 
   </br> NetworkController- NetworkController object provides the entry-point into libnetwork that exposes simple APIs for the users (such as Docker Engine) to allocate and manage Networks.
- </br> Libnetwork- Libnetwork is a real-world implementation of the CNM. 
+ </br> Libnetwork- The CNM is the design doc and libnetwork is the canonical implementation.
  </br> Drivers- Drivers extend the model by implementing specific network topologies such as VXLAN overlay networks.
- 
-![image](https://github.com/user-attachments/assets/82357dc6-c82e-48dc-8179-5873a7bf918d)
+
+<img src="https://github.com/user-attachments/assets/3a3fe48c-968e-4660-aa4a-b01aea24523a" width="400">
+
+<img src="https://github.com/user-attachments/assets/82357dc6-c82e-48dc-8179-5873a7bf918d" width="400">
 
 
 
