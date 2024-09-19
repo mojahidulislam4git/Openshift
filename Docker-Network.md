@@ -49,25 +49,25 @@ https://thenewstack.io/container-networking-landscape-cni-coreos-cnm-docker/
   </br>Ingress mode (default) -  Services published via ingress mode can be accessed from any node in the Swarm — even nodes not running a service replica. 
   </br>Host mode -  Services published via host mode can only be accessed by hitting nodes running service replicas.
 
-  Lab - [bridge-utils/brctl]
-  $ docker network ls 
-  $ docker inspect bridge
-  $ ip link show docker0 
-  $ docker inspect bridge | grep bridge.name 
-  $ docker network create -d bridge localnet
-  $ brctl show 
-  $ docker run -d --name c1 --network localnet alpine sleep 1d 
-  $ docker inspect localnet --format '{{json .Containers}}' 
-  $ docker run -it --name c2 --network localnet alpine sh 
-  $ docker run -d --name web --network localnet --publish 5001:80 nginx
-  $ docker port web 
-  $ docker network create -d macvlan --subnet=10.0.0.0/24 --ip-range=10.0.0.0/25 --gateway=10.0.0.1 -o parent=eth0.100 macvlan100 
-  $ docker run -d --name mactainer1 --network macvlan100 alpine sleep 1d 
-  $ docker run -it --name c1 --dns=8.8.8.8 --dns-search=nigelpoulton.com alpine sh
-  $ docker service create -d --name svc1 --publish published=5001,target=80,mode=host nginx 
+  </br>Lab - [bridge-utils/brctl]
+ </br> $ docker network ls 
+ </br> $ docker inspect bridge
+ </br> $ ip link show docker0 
+ </br> $ docker inspect bridge | grep bridge.name 
+ </br> $ docker network create -d bridge localnet
+ </br> $ brctl show 
+ </br> $ docker run -d --name c1 --network localnet alpine sleep 1d 
+ </br> $ docker inspect localnet --format '{{json .Containers}}' 
+ </br> $ docker run -it --name c2 --network localnet alpine sh 
+ </br> $ docker run -d --name web --network localnet --publish 5001:80 nginx
+ </br> $ docker port web 
+ </br> $ docker network create -d macvlan --subnet=10.0.0.0/24 --ip-range=10.0.0.0/25 --gateway=10.0.0.1 -o parent=eth0.100 macvlan100 
+ </br> $ docker run -d --name mactainer1 --network macvlan100 alpine sleep 1d 
+ </br> $ docker run -it --name c1 --dns=8.8.8.8 --dns-search=nigelpoulton.com alpine sh
+</br>  $ docker service create -d --name svc1 --publish published=5001,target=80,mode=host nginx 
 
-  $ docker network create -d overlay uber-net 
-  $ docker service create --name test --network uber-net --replicas 2 ubuntu sleep infinity 
+</br>  $ docker network create -d overlay uber-net 
+</br>  $ docker service create --name test --network uber-net --replicas 2 ubuntu sleep infinity 
 
    
 
