@@ -32,14 +32,14 @@ https://thenewstack.io/container-networking-landscape-cni-coreos-cnm-docker/
 </br> Bridge - (Default) A bridge network uses a software bridge which lets containers connected to the same bridge network communicate, while providing isolation from containers that aren’t connected to that bridge network.
 
 
-
-
 <img src="https://github.com/user-attachments/assets/d53bba7e-18d7-4cff-9ca1-94da6baca8b8" width="400">
 <img src="https://github.com/user-attachments/assets/4c37983e-10dc-45ac-8117-8cb8acafb8c2" width="400">
+<img src="https://github.com/user-attachments/assets/36a5d5b5-9faf-46ea-952c-3f5983e5ee0f" width="400">
 
 
 
-</br> Host - 
+</br> Host - The Host network driver in Docker is a networking mode that allows containers to directly use the networking stack of the Docker host machine.
+When a container is run with the Host network driver, it bypasses Docker’s network abstraction layer and gains direct access to the host’s network interfaces, routing table, and ports.
 
 
 
