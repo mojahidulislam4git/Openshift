@@ -25,11 +25,22 @@ https://thenewstack.io/container-networking-landscape-cni-coreos-cnm-docker/
  </br>bridge 
  </br>host
  </br>none
- </br>ipvlan
  </br>overlay
  </br>macvlan 
+ </br>ipvlan
+  
+</br> Bridge - (Default) A bridge network uses a software bridge which lets containers connected to the same bridge network communicate, while providing isolation from containers that aren’t connected to that bridge network.
 
-</br> bridge -
+
+
+
+<img src="https://github.com/user-attachments/assets/d53bba7e-18d7-4cff-9ca1-94da6baca8b8" width="400">
+<img src="https://github.com/user-attachments/assets/4c37983e-10dc-45ac-8117-8cb8acafb8c2" width="400">
+
+
+
+</br> Host - 
+
 
 
 
