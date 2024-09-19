@@ -23,6 +23,13 @@ https://thenewstack.io/container-networking-landscape-cni-coreos-cnm-docker/
 
  </br>Docker ships with several built-in drivers, known as native drivers or localdrivers. 
  </br>bridge 
+ </br>host
+ </br>none
+ </br>ipvlan
  </br>overlay
  </br>macvlan 
+
+</br> bridge -
+
+
 
