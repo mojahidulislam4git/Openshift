@@ -44,4 +44,9 @@ https://thenewstack.io/container-networking-landscape-cni-coreos-cnm-docker/
 <img src="https://github.com/user-attachments/assets/beec175b-a0b1-4fea-be45-8a370ea45a3a" width="150">
 <img src="https://github.com/user-attachments/assets/6b333811-d601-4f7d-bc09-cf68fd686079" width="150">
 
+</br>Service discovery-Service discovery allows all containers and Swarm services to locate each other by name. The only requirement is that they be on the same network.this leverages Docker’s embedded DNS server and the DNS resolver in each container.
+</br>Ingress load balancing- Swarm supports two network publishing modes that make services accessible outside of the cluster-
+  </br>Ingress mode (default) -  Services published via ingress mode can be accessed from any node in the Swarm — even nodes not running a service replica. 
+  </br>Host mode -  Services published via host mode can only be accessed by hitting nodes running service replicas.
+ 
 
