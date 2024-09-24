@@ -4,4 +4,16 @@ Create Mirror from RedHat to Local.
 2. Install the mirror-registry
    [root@localmirror ~]# ./mirror-registry install --quayHostname localmirror.mylab.local --quayRoot /opt/mirror-registry
 
-3.
+   OCP_RELEASE=4.16.4
+LOCAL_REGISTRY='localmirror.mylab.local:8443'
+LOCAL_REPOSITORY='ocp4/openshift4'
+PRODUCT_REPO='openshift-release-dev'
+LOCAL_SECRET_JSON='/home/mislam/pull-secret.json'
+RELEASE_NAME="ocp-release"
+ARCHITECTURE=x86_64
+REMOVABLE_MEDIA_PATH=/opt/media
+
+oc adm release mirror -a ${LOCAL_SECRET_JSON} --from=quay.io/${PRODUCT_REPO}/${RELEASE_NAME}:${OCP_RELEASE}-${ARCHITECTURE} --to=${LOCAL_REGISTRY}/${LOCAL_REPOSITORY} --to-releaseimage=${LOCAL_REGISTRY}/${LOCAL_REPOSITORY}:${OCP_RELEASE}-${ARCHITECTURE} --dry-run
+
+
+4.
