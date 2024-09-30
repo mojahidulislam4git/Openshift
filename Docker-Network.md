@@ -69,6 +69,12 @@ https://thenewstack.io/container-networking-landscape-cni-coreos-cnm-docker/
 </br>  $ docker network create -d overlay uber-net 
 </br>  $ docker service create --name test --network uber-net --replicas 2 ubuntu sleep infinity 
 
+
+
+======================================================
+Container Network Interface (CNI) is a framework for dynamically configuring networking resources. It uses a group of libraries and specifications written in Go.
+
+
    
 
    
