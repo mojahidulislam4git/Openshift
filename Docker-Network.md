@@ -72,10 +72,18 @@ https://thenewstack.io/container-networking-landscape-cni-coreos-cnm-docker/
 
 
 ======================================================
+Container Network Interface (CNI)-
 Container Network Interface (CNI) is a framework for dynamically configuring networking resources. It uses a group of libraries and specifications written in Go.
+consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers, along with a number of plugins.
+Kubernetes uses CNI as an interface between network providers and Kubernetes pod networking.
 
 
-   
+CNI network providers implement their network fabric using either an encapsulated network model such as Virtual Extensible Lan (VXLAN) or an unencapsulated network model such as Border Gateway Protocol (BGP).
+
+Encapsulated Network - 
+This network model generates a kind of network bridge extended between Kubernetes workers, where pods are connected.
+This network model is used when an extended L2 bridge is preferred. This network model is sensitive to L3 network latencies of the Kubernetes workers. 
+![image](https://github.com/user-attachments/assets/28fe3f3a-6e21-4a70-aa07-bcba621895db)
 
    
  
