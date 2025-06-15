@@ -1,21 +1,21 @@
 Core Components
-  Route
-  Pod
-  Service
-  Deployment
-  Project
-  Image Builder
-  Template
-  Build & Image Streams
+  - Route
+  - Pod
+  - Service
+  - Deployment
+  - Project
+  - Image Builder
+  - Template
+  - Build & Image Streams
 
 Infrastructure and Control Plane
-  	Node
-  	Openshift HA
-  	API Server
-  	etcd
-  	Controller Manager
-  	Scheduler
-  	Container Runtime
+  - Node
+  - Openshift HA
+  - API Server
+  - etcd
+  - Controller Manager
+  - Scheduler
+  - Container Runtime
 
 Monitoring and Observability
   	Metrics APIs
