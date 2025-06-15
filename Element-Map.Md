@@ -63,55 +63,54 @@ Resource Management
 
 Continuous Integration and Deployment
 - Openshift Pipelines
-	Source-to-Image(S2I)
-	Canary Deployments
-	Rolling Strategy
-	Recreate Strategy
-	Custom Strategy
-	Blue-Green Deployment
-	A/B Deployment
-	GitOps
-
+- Source-to-Image(S2I)
+- Canary Deployments
+- Rolling Strategy
+- Recreate Strategy
+- Custom Strategy
+- Blue-Green Deployment
+- A/B Deployment
+- GitOps
 
 Networking
-	Software-Defined (SDN)
-	Open Virtual Network
-	Multus
-	Cluster Network Operator
-	Services
-	Routes
-	Ingress
-	Load Balancer
-	OpenShift Operators
-	API Gateways
-	OpenShift Router
+- Software-Defined (SDN)
+- Open Virtual Network
+- Multus
+- Cluster Network Operator
+- Services
+- Routes
+- Ingress
+- Load Balancer
+- OpenShift Operators
+- API Gateways
+- OpenShift Router
 	
 Security and Identity Management
-	RBAC
-	IAM
-	Security Context (SCC)
-	Pod Security Policies
-	Encryption
-	Firewall
-	OAuth
-	Key Management
-	External Secrets
-	Security Policies
-	Secret
-	Certificate Authority
+- RBAC
+- IAM
+- Security Context (SCC)
+- Pod Security Policies
+- Encryption
+- Firewall
+- OAuth
+- Key Management
+- External Secrets
+- Security Policies
+- Secret
+- Certificate Authority
 	
 
 Configuration and Data Management
-	ConfigMap
-	Secret
-	Ingress	
-	PersistentVolume
-	StatefulSet
-	DaemonSet
-	CronJob	
+- ConfigMap
+- Secret
+- Ingress	
+- PersistentVolume
+- StatefulSet
+- DaemonSet
+- CronJob	
 	
 Package Management and Configuration
-	Helm
-	Operator Framework
-	Environment Variables
-	OpenShift Operator
+- Helm
+- Operator Framework
+- Environment Variables
+- OpenShift Operator
