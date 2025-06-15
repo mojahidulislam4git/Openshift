@@ -18,51 +18,51 @@ Infrastructure and Control Plane
   - Container Runtime
 
 Monitoring and Observability
-  	Metrics APIs
-  	Prometheus
-  	Grafana
-  	Events
-  	Logging
-  	Log Aggregation
-  	Tracing Data Collection
-  	Open Telemetry
-  	Audit Logging
+  - Metrics APIs
+  - Prometheus
+  - Grafana
+  - Events
+  - Logging
+  - Log Aggregation
+  - Tracing Data Collection
+  - Open Telemetry
+  - Audit Logging
   	
 	
 Autoscaling and Load Balancing
-  	Node Auto-Provisioning
-  	Horizontal Pod Autoscaler
-  	Vertical Pod Autoscaler
-  	Cluster Autoscaler
-  	Load Balancer
+  - Node Auto-Provisioning
+  - Horizontal Pod Autoscaler
+  - Vertical Pod Autoscaler
+  - Cluster Autoscaler
+  - Load Balancer
 
 Stateful Application and Data Management
-  	Statefulset
-  	Persistent Storage
-  	CSI
-  	Custom Resource Definition
-  	Dynamic Provisioning
-  	Ephemeral Storage
-  	Storage Classes
-  	Volume Types
+  - Statefulset
+  - Persistent Storage
+  - CSI
+  - Custom Resource Definition
+  - Dynamic Provisioning
+  - Ephemeral Storage
+  - Storage Classes
+  - Volume Types
   	
 Backup, Restore and Disaster Recovery
-	Pod Disruption Budget
-	Volume Snapshots
+ - Pod Disruption Budget
+ - Volume Snapshots
 
 Resource Management
-	Resource Quotas
-	Limit Ranges
-	Pod Affinity
-	Pod Anti-Affinity
-	Readiness Probe
-	Liveness Probe
-	Node Affinity
-	Node Selector
-	Taints and Tolerations
+ - Resource Quotas
+ - Limit Ranges
+ - Pod Affinity
+ - Pod Anti-Affinity
+ - Readiness Probe
+ - Liveness Probe
+ - Node Affinity
+ - Node Selector
+ - Taints and Tolerations
 
 Continuous Integration and Deployment
-	Openshift Pipelines
+- Openshift Pipelines
 	Source-to-Image(S2I)
 	Canary Deployments
 	Rolling Strategy
